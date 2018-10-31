@@ -13,10 +13,15 @@ https://chrome.google.com/webstore/detail/lino-tracker/ikkanbbfhofmdnhamjepmgogi
 
 ------------
 
-
 ## Install & Run
 
-All you need is just to clone the repository and run a "app.html" file in the browser. Nothing more is needed!
+All you need is just to clone the repository and run a "index.html" file in the browser. Nothing more is needed!
+
+------------
+
+## Run from GitHub
+
+[https://raw.githack.com/epexa/lino-tracker/master/index.html](https://raw.githack.com/epexa/lino-tracker/master/index.html)
 
 ------------
 
