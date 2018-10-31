@@ -1,4 +1,7 @@
 # Lino Tracker - explorer for [Lino blockchain](https://lino.network/)
+
+<a href="https://github.com/epexa/lino-tracker/blob/master/LICENSE"><img src="https://camo.githubusercontent.com/76f0e887c183ccc31c1cb63c33d2dbf48cb2df51/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d677265656e2e737667" alt="" data-canonical-src="https://img.shields.io/badge/License-MIT-green.svg" style="max-width:100%;"></a>
+
 [![Run Lino Tracker from GitHub](https://user-images.githubusercontent.com/2198826/47804678-77134180-dd46-11e8-9c98-15ab3a685d87.png "Run Lino Tracker from GitHub")](https://epexa.github.io/lino-tracker/index.html "Run Lino Tracker from GitHub")
 
 ------------
@@ -39,14 +42,14 @@ Alternative:
 ## Real-time monitoring
 ![Real-time monitoring](https://user-images.githubusercontent.com/2198826/47806170-26054c80-dd4a-11e8-8d27-e1d719fb17cc.png)
 
-## Information about user
-![Information about user](https://user-images.githubusercontent.com/2198826/47806174-2998d380-dd4a-11e8-8324-6695d31fb20b.png)
-
 ## Full information about block (transactions view)
 ![lino tracker](https://user-images.githubusercontent.com/2198826/47806184-2c93c400-dd4a-11e8-8ac1-7db839d393af.png)
 
 ## Full information about block in JSON
 ![Full information about block in JSON](https://user-images.githubusercontent.com/2198826/47806179-2b629700-dd4a-11e8-8df0-0ccd545654b2.png)
+
+## Information about user
+![Information about user](https://user-images.githubusercontent.com/2198826/47806174-2998d380-dd4a-11e8-8324-6695d31fb20b.png)
 
 ------------
 
