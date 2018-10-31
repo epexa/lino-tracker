@@ -21,6 +21,9 @@ All you need is just to clone the repository and run a "index.html" file in the 
 
 ## Run from GitHub
 
+[https://epexa.github.io/lino-tracker/index.html](https://epexa.github.io/lino-tracker/index.html)
+
+Alternative:
 [https://raw.githack.com/epexa/lino-tracker/master/index.html](https://raw.githack.com/epexa/lino-tracker/master/index.html)
 
 ------------
