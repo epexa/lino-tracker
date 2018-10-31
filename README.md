@@ -2,7 +2,7 @@
 
 <a href="https://github.com/epexa/lino-tracker/blob/master/LICENSE"><img src="https://camo.githubusercontent.com/76f0e887c183ccc31c1cb63c33d2dbf48cb2df51/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d677265656e2e737667" alt="" data-canonical-src="https://img.shields.io/badge/License-MIT-green.svg" style="max-width:100%;"></a>
 
-[![Run Lino Tracker from GitHub](https://user-images.githubusercontent.com/2198826/47804678-77134180-dd46-11e8-9c98-15ab3a685d87.png "Run Lino Tracker from GitHub")](https://epexa.github.io/lino-tracker/index.html "Run Lino Tracker from GitHub")
+[![Run Lino Tracker from GitHub](https://user-images.githubusercontent.com/2198826/47804678-77134180-dd46-11e8-9c98-15ab3a685d87.png "Run Lino Tracker from GitHub")](https://epexa.github.io/lino-tracker/ "Run Lino Tracker from GitHub")
 
 ------------
 
@@ -30,10 +30,10 @@ All you need is just to clone the repository and run a "index.html" file in the 
 
 ## Run from GitHub
 
-**[https://epexa.github.io/lino-tracker/index.html](https://epexa.github.io/lino-tracker/index.html)**
+**[https://epexa.github.io/lino-tracker/](https://epexa.github.io/lino-tracker/)**
 
 Alternative:
-[https://raw.githack.com/epexa/lino-tracker/master/index.html](https://raw.githack.com/epexa/lino-tracker/master/index.html)
+[https://raw.githack.com/epexa/lino-tracker/master/](https://raw.githack.com/epexa/lino-tracker/master/)
 
 ------------
 
