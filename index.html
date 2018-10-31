@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Lino Tracker</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.1.3/dist/pulse/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css">
+		<link rel="stylesheet" href="custom.css">
+		<link rel="shortcut icon" href="graphics/favicon.ico">
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+				<a class="navbar-brand" href="# ">
+					<img src="graphics/logo.png" class="d-inline-block align-top" alt="Lino Tracker">
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<form class="form-inline my-2 my-lg-0 col-sm-4" id="search">
+						<div class="col-sm-12">
+							<div class="input-group">
+								<input class="form-control form-control-sm" name="search" type="search" placeholder="Block number or username" data-title="Search for a block, transaction or username on the Lino blockchain" data-placement="right" data-container="nav" required="">
+								<div class="input-group-append">
+									<button class="btn btn-danger btn-sm" id="reset-search-btn" type="button"><span class="icon-cross"></span></button>
+									<button class="btn btn-warning btn-sm" type="submit"><span class="icon-search"></span> Search</button>
+								</div>
+							</div>
+						</div>
+					</form>
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="#validators"><span class="icon-users"></span> Validators</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#apps"><span class="icon-user-tie"></span> Apps</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#infra-providers"><span class="icon-file-text2"></span> Infra providers</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" target="_blank" href="https://chrome.google.com/webstore/detail/lino-tracker/ikkanbbfhofmdnhamjepmgogibajfmhj"><img src="graphics/chrome-logo.svg"> Chrome</a>
+						</li>
+					</ul>
+					<form class="form-inline">
+						<div class="input-group input-group-sm">
+							<div class="input-group-prepend">
+								<button class="btn btn-warning btn-sm" id="node-address-modal-btn" type="button"><span class="icon-database"></span> Change</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</nav>
+		</header>
+		<article>
+			<main role="main" class="container-fluid">
+				<br>
+				<div class="row" id="main-page">
+					<div class="col-8">
+						<div id="recent-blocks-info">
+							<div class="row">
+								<div class="col">
+									<h5>Recent Blockchain Activity</h5>
+								</div>
+								<div class="col">
+									<button class="btn btn-secondary btn-sm float-right" id="change-work-real-time" type="button"><span class="icon-pause2"></span> Pause monitoring</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									Displaying most recent irreversible blocks.
+								</div>
+								<div class="col" id="auto-clear">
+									<button class="btn btn-light btn-sm float-right" id="clear-real-time" type="button"><span class="icon-bin"></span> Clear table</button>
+									<div class="col-sm-3 float-right">
+										<input type="number" class="form-control form-control-sm" id="auto-clear-real-time-after" value="50" min="1">
+									</div>
+									<label for="auto-clear-real-time-after" class="float-right">Auto-clear old blocks after:</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<h5>Current Height <span class="badge badge-primary" id="head-block-number">...</span></h5>
+								</div>
+							</div>
+						</div>
+						<table class="table table-bordered table-hover table-sm" id="recent-blocks-table">
+							<thead>
+								<tr class="table-primary">
+									<th scope="col">Height</th>
+									<th scope="col">Time</th>
+									<th scope="col">Validators</th>
+									<th scope="col">Transactions</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-4">
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="global-meta-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Global Meta</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="get-consumption-meta-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Consumption Meta</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="evaluate-of-content-value-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Evaluate Of Content Value Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="global-allocation-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Global Allocation Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="infra-internal-allocation-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Infra Internal Allocation Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="developer-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Developer Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="vote-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Vote Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="proposal-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Proposal Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="validator-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Validator Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="coin-day-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Coin Day Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="bandwidth-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Bandwidth Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="account-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Account Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover table-sm" id="post-param-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col" colspan="2">Post Param</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div id="about-block-page">
+							<h5>Height <span class="badge badge-info" id="about-block-height">...</span></h5>
+							<h5>Time <span class="badge badge-info" id="about-block-time">...</span></h5>
+							<h5>Validators count <span class="badge badge-info" id="about-block-validators-count">...</span></h5>
+							<h5>Transactions count <span class="badge badge-info" id="about-block-transactions-count">...</span></h5>
+							<table class="table table-bordered table-hover table-sm" id="about-block-table">
+								<tbody>
+								</tbody>
+							</table>
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="true">Transactions</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="json-tab" data-toggle="tab" href="#json" href="#json" role="tab" aria-controls="json" aria-selected="false">JSON</a>
+								</li>
+							</ul>
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
+									<table class="table table-bordered table-hover table-sm" id="about-block-transactions-table">
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+								<div class="tab-pane fade" id="json" role="tabpanel" aria-labelledby="json-tab">
+									<pre><code class="json" id="about-block-code"></code></pre>
+								</div>
+							</div>
+						</div>
+						<div id="validators-page">
+							<div class="row">
+								<div class="col">
+									<h5>Validators</h5>
+								</div>
+							</div>
+							<table class="table table-bordered table-hover table-sm" id="validators-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col">Name</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div id="apps-page">
+							<div class="row">
+								<div class="col">
+									<h5>Apps</h5>
+								</div>
+							</div>
+							<table class="table table-bordered table-hover table-sm" id="apps-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col">Username</th>
+										<th scope="col">Website</th>
+										<th scope="col">Deposit</th>
+										<th scope="col">Consumption</th>
+										<th scope="col">Description</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div id="infra-providers-page">
+							<div class="row">
+								<div class="col">
+									<h5>Infra Providers</h5>
+								</div>
+							</div>
+							<table class="table table-bordered table-hover table-sm" id="infra-providers-table">
+								<thead>
+									<tr class="table-primary">
+										<th scope="col">Provider</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div id="about-account-page">
+							<div class="card">
+								<div class="row">
+									<div class="col-7">
+										<div class="row">
+											<div class="col-7">
+												<h5 class="card-text">Created <span class="badge badge-dark" data="created_at"></span></h5>
+												<h5 class="card-text">Last activity <span class="badge badge-dark" data="last_activity_at"></span></h5>
+												<h5 class="card-text">Last post <span class="badge badge-dark" data="last_post_at"></span></h5>
+												<h5 class="card-text">Last report or upvote <span class="badge badge-dark" data="last_report_or_upvote_at"></span></h5>
+												<h5 class="card-text">Sequence <span class="badge badge-dark" data="sequence"></span></h5>
+												<h5 class="card-text">Transaction capacity <span class="badge badge-dark" data="transaction_capacity"></span></h5>
+											</div>
+											<div class="col-5">
+												<h5 class="card-text">Coin day <span class="badge badge-dark" data="coin_day"></span></h5>
+												<h5 class="card-text">Number of reward <span class="badge badge-dark" data="number_of_reward"></span></h5>
+												<h5 class="card-text">Number of transaction <span class="badge badge-dark" data="number_of_transaction"></span></h5>
+												<h5 class="card-text">Saving <span class="badge badge-dark" data="saving"></span></h5>
+												<h5 class="card-text">Frozen money list <span class="badge badge-dark" data="frozen_money_list"></span></h5>
+											</div>
+										</div>
+									</div>
+									<div class="col-5">
+										<table class="table table-bordered table-hover table-sm">
+											<thead>
+												<tr><th colspan="2">Public keys:</th></tr>
+											</thead>
+											<tbody>
+												<tr><td>App</td><td><span data="app_key"></span></td></tr>
+												<tr><td>Reset</td><td><span data="reset_key"></span></td></tr>
+												<tr><td>Transaction</td><td><span data="transaction_key"></span></td></tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+			</main>
+		</article>
+		<footer class="footer">
+			<div class="container-fluid">
+				<span class="text-muted">Lino Tracker @ 2018</span>
+			</div>
+		</footer>
+		<div class="modal" id="modal-node-address" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Node address</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="node-address">
+							<div class="input-group">
+								<input class="form-control" name="node-address" type="url" placeholder="https://fullnode.linovalidator.io/" value="https://fullnode.linovalidator.io/" required="">
+								<button class="btn btn-danger" id="reset-node-address" type="button"><span class="icon-spinner11"></span></button>
+								<button class="btn btn-success" type="submit"><span class="icon-database"></span> Change</button>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button class="btn btn-success" id="back-to-top"><span class="icon-circle-up"></span> Back to top</button>
+		<script src="https://cdn.jsdelivr.net/npm/lino-js@1.0.1/lib/lino-js.umd.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap.native@2.0.23/dist/bootstrap-native-v4.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.13.1/dist/sweetalert2.all.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/js-beautify@1.7.5/js/lib/beautify.js"></script>
+		<script src="utils.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
