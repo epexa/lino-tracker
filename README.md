@@ -1,10 +1,5 @@
-# Lino Tracker
-
-![eno8bdy](https://user-images.githubusercontent.com/2198826/47804678-77134180-dd46-11e8-9c98-15ab3a685d87.png)
-
-------------
-
-## Explorer for [Lino blockchain](https://lino.network/)
+# Lino Tracker - explorer for [Lino blockchain](https://lino.network/)
+[![Run Lino Tracker from GitHub](https://user-images.githubusercontent.com/2198826/47804678-77134180-dd46-11e8-9c98-15ab3a685d87.png "Run Lino Tracker from GitHub")](https://epexa.github.io/lino-tracker/index.html "Run Lino Tracker from GitHub")
 
 ------------
 
@@ -32,7 +27,7 @@ All you need is just to clone the repository and run a "index.html" file in the 
 
 ## Run from GitHub
 
-[https://epexa.github.io/lino-tracker/index.html](https://epexa.github.io/lino-tracker/index.html)
+**[https://epexa.github.io/lino-tracker/index.html](https://epexa.github.io/lino-tracker/index.html)**
 
 Alternative:
 [https://raw.githack.com/epexa/lino-tracker/master/index.html](https://raw.githack.com/epexa/lino-tracker/master/index.html)
@@ -45,6 +40,8 @@ Alternative:
 * [bootswatch](https://github.com/thomaspark/bootswatch)
 * [bootstrap.native](https://github.com/thednp/bootstrap.native)
 * [sweetalert2](https://github.com/sweetalert2/sweetalert2)
+* [highlight.js](https://github.com/highlightjs/highlight.js)
+* [js-beautify](https://github.com/beautify-web/js-beautify)
 
 ------------
 
