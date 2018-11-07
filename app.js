@@ -140,6 +140,12 @@ lino.query
 	.then(properties => {
 		blockchainParametersTableHandler('post-param-table', properties);
 	});
+	
+lino.query
+	.getReputationParam()
+	.then(properties => {
+		blockchainParametersTableHandler('reputation-param-table', properties);
+	});
 
 $changeWorkRealTime.addEventListener('click', () => {
 	if (workRealTime) {
