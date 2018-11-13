@@ -53,6 +53,7 @@ let camelCaseParam = (str) => {
 
 let blockchainParametersTableHandler = ($tableId, properties) => {	
 	const $blockchainParametersTableTbody = document.getElementById($tableId).querySelector('tbody');
+	$blockchainParametersTableTbody.innerHTML = '';
 	for (let key in properties) {
 		const $newRow = $blockchainParametersTableTbody.insertRow(0);
 		const paramName = camelCaseParam(key);
@@ -62,6 +63,17 @@ let blockchainParametersTableHandler = ($tableId, properties) => {
 		$newRow.innerHTML = `<tr><td>${paramName}</td><td><b>${paramValue}</b></td></tr>`;
 	}
 }
+
+let getGlobalTime = () => {
+	lino.query
+	.getGlobalTime()
+		.then(properties => {
+			properties.chain_start_time = unixtimeToHumanFormat(properties.chain_start_time);
+			properties.last_block_time = unixtimeToHumanFormat(properties.last_block_time);
+			blockchainParametersTableHandler('global-time-table', properties);
+		});
+}
+getGlobalTime();
 
 lino.query
 	.getGlobalMeta()
@@ -186,9 +198,11 @@ const linoGetStatus = (callback) => {
 }
 
 let latestBlockHeight;
-setInterval(() => {
+
+const streamBlockNumber = () => {
 	linoGetStatus(status => {
 		if (latestBlockHeight != status.result.sync_info.latest_block_height) {
+			getGlobalTime();
 			latestBlockHeight = status.result.sync_info.latest_block_height;
 			$headBlockNumber.innerText = status.result.sync_info.latest_block_height;
 			if (workRealTime) {
@@ -230,7 +244,11 @@ setInterval(() => {
 			}
 		}
 	});
-}, 2000); // because lino creates new blocks every 4 sec :)
+}
+
+streamBlockNumber();
+
+setInterval(streamBlockNumber, 2000); // because lino creates new blocks every 4 sec :)
 
 if (localStorage && localStorage.clearAfterBlocksVal) $autoClearRealTimeAfter.value = localStorage.clearAfterBlocksVal;
 
